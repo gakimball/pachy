@@ -12,7 +12,8 @@ const pachy = require('.');
 
 describe('CLI', () => {
   it('creates a bundle with Webpack', function (done) {
-    this.timeout(5000);
+    // Node 4 needs a lot of time to run this test
+    this.timeout(10000);
     const outputFile = tempy.file({extension: 'js'});
     execa(path.join(__dirname, 'cli.js'), ['fixtures/input.js', outputFile]).then(() => {
       const output = fs.readFileSync(outputFile).toString();
